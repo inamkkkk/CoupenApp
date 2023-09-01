@@ -1,3 +1,4 @@
+import 'package:customer_coupon_flutter_app/Responsive/ResponsiveClass.dart';
 import 'package:customer_coupon_flutter_app/screens/detail-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +25,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.white,
         body: Container(
           margin: const EdgeInsets.only(top: 10),
           padding: const EdgeInsets.only(top: 8),
@@ -60,7 +61,7 @@ class _ApiDealsState extends State<ApiDeals> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 5),
           child: SizedBox(
-            height: 120,
+            height: responsive(120, context),
             width: double.infinity,
             child: InkWell(
               onTap: ()
@@ -90,14 +91,14 @@ class _ApiDealsState extends State<ApiDeals> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding:  EdgeInsets.only(right: responsive(15, context)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        width: 90,
-                        height: 90,
+                        width: responsive(120, context),
+                        height: responsive(100, context),
                         decoration: BoxDecoration(
                           border: Border.all(
                             style: BorderStyle.solid,
@@ -110,24 +111,45 @@ class _ApiDealsState extends State<ApiDeals> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: 90,
-                              height: 70,
-                              child: ClipRRect(
-                                child: offersList!.offers![i].imageUrl != ""?
-                                Image.network(
-                                  '${offersList!.offers![i].imageUrl}',
-                                  fit: BoxFit.fill,
-                                ):
-                                Image.asset('assets/images/defualt.png',fit: BoxFit.fill),
+                              width: responsive(120, context),
+                              height: responsive(80, context),
+                              decoration: ShapeDecoration(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(responsive(8, context)),   // Top left corner radius
+                                    //bo: Radius.circular(20),  // Top right corner radius
+                                  ),
+                                ),
+                                // borderRadius: BorderRadius.circular(18),
+                                image: ltl[i].imageUrl == ''?
+                                const DecorationImage(
+                                  image: AssetImage('assets/images/defualt.png'),
+                                  //  NetworkImage('${ltl[i].imageUrl}')
+                                  fit: BoxFit.fitHeight,):
+                                DecorationImage(
+                                  //image: AssetImage('assets/images/defualt.png'),
+                                  image: NetworkImage('${ltl[i].imageUrl}'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             Container(
-                              color: Colors.black.withOpacity(0.05),
+                              decoration: ShapeDecoration(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(responsive(8, context)),   // Top left corner radius
+                                    //bo: Radius.circular(20),  // Top right corner radius
+                                  ),
+                                ),
+                                color: Colors.black.withOpacity(0.05),
+                              ),
+                            // height: responsive(20, context),
+
                               child: Center(
                                 child: Text('Get Deal',style: TextStyle(
                                   color: Colors.black.withOpacity(0.5),
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 13
+                                  fontSize: responsive(13, context)
                                 ),
                                 ),
                               ),

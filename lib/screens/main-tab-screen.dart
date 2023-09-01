@@ -60,7 +60,7 @@ class _MainTabScreenState extends State<MainTabScreen> with SingleTickerProvider
     });
     return  Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: Colors.green.withOpacity(0.6),
             toolbarHeight: 120,
             elevation: 0,
             actions: [

@@ -2,15 +2,20 @@
 
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 import '../main.dart';
 import '../models/coupons.dart';
 import '../models/offers.dart';
 
+class deals extends ChangeNotifier{
+
+}
+
 //const String apiKey = 'c2d0d69ce02524947f50bb4230972354';
 //const String apiKey = 'abf7d7a6327fbc47da2abdf3691043a3';
-const String apiKey = '5d8f2279c210d83315aeff42b0069c80';
+const String apiKey = 'be9c4462f8d6484122921e67129b23c9';
 
 Coupons? offersList;
 List<Offers> lf = [];
@@ -39,6 +44,7 @@ Future<dynamic> getResponse () async {
     var map = jsonDecode(response.body);
    // print('$map');
     offersList = Coupons.fromJson(map);
+    print("${offersList?.offers![0]}");
     for(var v in offersList!.offers!){
       storeName.add(v.merchantHomepage!);
       parsedDate = DateTime.parse(v.startDate!);

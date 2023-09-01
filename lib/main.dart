@@ -26,7 +26,6 @@ var isLoading = true;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp();
   prefs = await SharedPreferences.getInstance();
   await getResponse ();
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        // primarySwatch: Colors.green.withOpacity(0.7),
       ),
       home: const SplashScreen (),
     );

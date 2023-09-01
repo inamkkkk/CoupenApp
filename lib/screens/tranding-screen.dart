@@ -9,7 +9,7 @@ class TrendingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.white,
 
       body: Container(
         margin: const EdgeInsets.only(top: 10),
@@ -37,9 +37,9 @@ class Deals extends StatelessWidget {
       stream: firebase.collection('Deals').snapshots(),
       builder: (context, snapshot){
         if(!snapshot.hasData){
-          return const Center(
+          return  Center(
             child: CircularProgressIndicator(
-              backgroundColor: Colors.deepPurple,
+              backgroundColor: Colors.green.withOpacity(0.7),
             ),
           );
         }

@@ -3,6 +3,8 @@ import 'package:customer_coupon_flutter_app/screens/detail-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../Responsive/ResponsiveClass.dart';
+
 
 class LatestScreen extends StatefulWidget {
   const LatestScreen({Key? key}) : super(key: key);
@@ -30,10 +32,14 @@ class _LatestScreenState extends State<LatestScreen> {
     super.initState();
     //
   }
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight - responsive(180, context)) / responsive(2, context);
+    final double itemWidth = size.width / responsive(2, context);
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.white,
       body: Container(
         margin: const EdgeInsets.only(top: 10),
         padding: const EdgeInsets.only(top: 8),
@@ -47,10 +53,11 @@ class _LatestScreenState extends State<LatestScreen> {
             //       child: CircularProgressIndicator(),
             //     ) :
             GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 10.0,
             crossAxisSpacing: 5.0,
+            childAspectRatio: responsive(0.8, context),
            // mainAxisExtent: 200,
             //crossAxisSpacing: 30.0,
           ),
@@ -80,58 +87,133 @@ class _LatestScreenState extends State<LatestScreen> {
                   ),
                   );
                 },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
+                child: Container(
+                  height: responsive(400,context),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20), // Rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3), // Shadow color
+                        spreadRadius: 5, // Spread radius
+                        blurRadius: 10, // Blur radius
+                        offset: Offset(0, 3), // Shadow offset
+                      ),
+                    ],
+
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: responsive(217.4, context),
+
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),   // Top left corner radius
+                              topRight: Radius.circular(20),  // Top right corner radius
+                            ),
+                          ),
+                          // borderRadius: BorderRadius.circular(18),
                           image: ltl[i].imageUrl == ''?
                           const DecorationImage(
                             image: AssetImage('assets/images/defualt.png'),
                           //  NetworkImage('${ltl[i].imageUrl}')
-                            fit: BoxFit.fill,):
+                            fit: BoxFit.fitHeight,):
                           DecorationImage(
                             //image: AssetImage('assets/images/defualt.png'),
                             image: NetworkImage('${ltl[i].imageUrl}'),
-                            fit: BoxFit.fill,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top:10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            ltl[i].code == "" ?
-                            '${ltl[i].type}' :
-                            '${ltl[i].code}',
-                            style: const TextStyle(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.w400
-                              //color: Colors.white,
+                      Container(
+                        decoration: ShapeDecoration(
+                          color: Colors.green.withOpacity(0.7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(responsive(20, context)),   // Top left corner radius
+                              bottomRight: Radius.circular(responsive(20, context)),  // Top right corner radius
                             ),
-                          ),
-                          Text('${ltl[i].store}'.split('.')[0],
-                            // style: const TextStyle(
-                            //     fontWeight: FontWeight.w500
-                            // ),
+                          ),),
+                        height: responsive(50, context),
 
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                color: Colors.grey,
-                                letterSpacing: 1.0,
-                                fontWeight: FontWeight.w500
-                            ),
+                        child: Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: responsive(10, context)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Discount",
+                                    style:  TextStyle(
+                                      color: Colors.white,
+                                        fontSize: responsive(13, context),
+                                        letterSpacing: 1.0,
+                                        fontWeight: FontWeight.w500
+
+                                      //color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    ltl[i].code == "" ?
+                                    '${ltl[i].type}' :
+                                    '${ltl[i].offerValue}% Off',
+                                    style:  TextStyle(
+color: Colors.red,
+
+                                      fontSize: responsive(11, context),
+                                        letterSpacing: 1.0,
+                                      fontWeight: FontWeight.w600
+                                      //color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Store'.split('.')[0],
+                                    // style: const TextStyle(
+                                    //     fontWeight: FontWeight.w500
+                                    // ),
+
+                                    textAlign: TextAlign.center,
+                                    style:  TextStyle(
+                                      fontSize: responsive(13, context),
+
+                                        color: Colors.white,
+                                        letterSpacing: 1.0,
+                                        fontWeight: FontWeight.w500
+                                    ),
+                                  ),
+                                  Text('${ltl[i].store}'.split('.')[0],
+                                    // style: const TextStyle(
+                                    //     fontWeight: FontWeight.w500
+                                    // ),
+
+                                    textAlign: TextAlign.center,
+                                    style:  TextStyle(
+                                        fontSize: responsive(11, context),
+                                        color: Colors.red,
+                                        letterSpacing: 1.0,
+                                        fontWeight: FontWeight.w500
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             )

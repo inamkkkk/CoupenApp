@@ -55,7 +55,7 @@ class _DetailScreenState extends State<DetailScreen> {
     setState(() {
     });
      //kfav = json.decode(prefs.getString('lf'));
-    if (json.decode(prefs.getString('lf')) != null) {
+    if (json.decode(prefs!.getString('lf')) != null) {
       kfav.clear();
       var map = json.decode(prefs.getString('lf'));
       for (var v in map) {
@@ -77,7 +77,7 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.green.withOpacity(0.7)  ,
         title: const Text('Info'),
         leading: IconButton(
           onPressed: (){
@@ -107,7 +107,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     }
                   },
                   child: Card(
-                    elevation: 2,
+                    elevation: 10,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 25, bottom: 10,right: 10,left: 10),
                       child: Column(
@@ -117,7 +117,19 @@ class _DetailScreenState extends State<DetailScreen> {
                           Align(
                             alignment: Alignment.center,
                               child: Container(
-                                child:  widget.imageUrl != ''?
+                                decoration: BoxDecoration(
+                    //               image: widget.imageUrl == ''?
+                    //                 const DecorationImage(
+                    //                 image: AssetImage('assets/images/defualt.png'),
+                    //             //  NetworkImage('${ltl[i].imageUrl}')
+                    //             fit: BoxFit.fitHeight,):
+                    //       DecorationImage(
+                    //       //image: AssetImage('assets/images/defualt.png'),
+                    //       image: NetworkImage('${widget.imageUrl}'),
+                    //   fit: BoxFit.cover,
+                    // ),
+                                ),
+                                child:widget.imageUrl != ''?
                                 Image.network('${widget.imageUrl}'):
                                 Image.asset('assets/images/defualt.png',scale: 5,),
                               ),
