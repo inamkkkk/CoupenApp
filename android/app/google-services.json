@@ -1,65 +1,26 @@
 {
   "project_info": {
-    "project_number": "165364593245",
-    "project_id": "my-deals-66ad7",
-    "storage_bucket": "my-deals-66ad7.appspot.com"
+    "project_number": "278370965295",
+    "project_id": "coupen-25dcf",
+    "storage_bucket": "coupen-25dcf.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:165364593245:android:7bdec8f34898119c1b13b4",
-        "android_client_info": {
-          "package_name": "com.codefend.admin_coupon_flutter_app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "165364593245-tjgcgdrpn7l9pirv9n8mrjs70ljr76go.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyArGDy16RDYpAg5_wFyLEgTYexA6ql2gWQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "165364593245-tjgcgdrpn7l9pirv9n8mrjs70ljr76go.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:165364593245:android:e42b821cd04844591b13b4",
+        "mobilesdk_app_id": "1:278370965295:android:7867719f438a6fd45eb3da",
         "android_client_info": {
           "package_name": "com.codefend.customer_coupon_flutter_app"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "165364593245-tjgcgdrpn7l9pirv9n8mrjs70ljr76go.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyArGDy16RDYpAg5_wFyLEgTYexA6ql2gWQ"
+          "current_key": "AIzaSyChtSgoIJJuy2bzCDqv2kEA-fk7CP4zDZU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "165364593245-tjgcgdrpn7l9pirv9n8mrjs70ljr76go.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

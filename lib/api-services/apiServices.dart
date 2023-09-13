@@ -43,6 +43,7 @@ Future<dynamic> getResponse () async {
     print('hello');
     var map = jsonDecode(response.body);
    // print('$map');
+ //deals
     offersList = Coupons.fromJson(map);
     print("${offersList?.offers![0]}");
     for(var v in offersList!.offers!){

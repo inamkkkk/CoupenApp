@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:customer_coupon_flutter_app/Responsive/ResponsiveClass.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../api-services/apiServices.dart';
@@ -77,6 +78,7 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+
         backgroundColor: Colors.green.withOpacity(0.7)  ,
         title: const Text('Info'),
         leading: IconButton(
@@ -228,28 +230,32 @@ class _DetailScreenState extends State<DetailScreen> {
                             ],
                           ),
                         ),
-                        TextButton(
-                          style:  ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey.withOpacity(0.4),
-                          ),
-                            onPressed:  () async{
-                          final  _url = Uri.parse('${widget.url}');
-                          //final _url = offersList!.offers![0].store;
-                          if (!await launchUrl(
-                            _url,
-                            mode: LaunchMode.externalNonBrowserApplication,
-                          )) {
-                            throw 'Could not launch $_url';
-                          }
-                        },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text('Get Deal'.toUpperCase(),style: const TextStyle(
-                                  color: Colors.deepPurple,
-                                fontWeight: FontWeight.w600
-                              ),
-                              ),
+                        Card(
+                          elevation: 8,
+                          shadowColor: Colors.grey.withOpacity(0.9),
+                          child: TextButton(
+                            style:  ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green.withOpacity(0.8),
                             ),
+                              onPressed:  () async{
+                            final  _url = Uri.parse('${widget.url}');
+                            //final _url = offersList!.offers![0].store;
+                            if (!await launchUrl(
+                              _url,
+                              mode: LaunchMode.externalNonBrowserApplication,
+                            )) {
+                              throw 'Could not launch $_url';
+                            }
+                          },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Get Deal'.toUpperCase(),style: const TextStyle(
+                                    color: Colors.white,
+                                  fontWeight: FontWeight.w600
+                                ),
+                                ),
+                              ),
+                          ),
                         ),
                       ],
                     ),
@@ -323,9 +329,11 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                 ),
                 Card(
+                  elevation: 8,
+                  shadowColor: Colors.grey.withOpacity(1),
                   child: TextButton(
                     style:  ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.withOpacity(0.4),
+                        backgroundColor: Colors.green.withOpacity(0.8),
                     ),
                     onPressed:  () async{
                       var b = jsonEncode(widget.lfi[0]);
@@ -376,15 +384,18 @@ class _DetailScreenState extends State<DetailScreen> {
 
 
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('Save Deal'.toUpperCase(),style: const TextStyle(
-                          color: Colors.deepPurple,
+                      padding:  EdgeInsets.all(8.0),
+                      child: Text('Save Deal'.toUpperCase(),style:  TextStyle(
+                          color: Colors.white,
+                          fontSize: responsive(20, context),
                           fontWeight: FontWeight.w500
                       ),
                       ),
                     ),
                   ),
+                  
                 ),
+                SizedBox(height: responsive(10, context),)
               ],
             ),
           ),

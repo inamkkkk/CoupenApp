@@ -39,7 +39,7 @@ class _MainTabScreenState extends State<MainTabScreen> with SingleTickerProvider
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     tabController.addListener(_handleTabSelection);
   }
   @override
@@ -102,9 +102,9 @@ class _MainTabScreenState extends State<MainTabScreen> with SingleTickerProvider
                 Tab(
                   icon: Text('Featured',),
                 ),
-                Tab(
-                  icon: Text('Trending',),
-                ),
+                // Tab(
+                //   icon: Text('Trending',),
+                // ),
               ],
             ),
             title: const Text('DealBuds', style: TextStyle(color: Colors.white),),
@@ -179,17 +179,17 @@ class _MainTabScreenState extends State<MainTabScreen> with SingleTickerProvider
                     leading: const Icon(Icons.featured_play_list),
                     title: const Text('Featured Deals'),
                   ),
-                  ListTile(
-                    onTap: (){
-                      setState(() {
-                        tabController.index=2;
-                      });
-                      Navigator.pop(context);
-
-                    },
-                    leading: const Icon(Icons.trending_up),
-                    title: const Text('Trending Deals'),
-                  ),
+                  // ListTile(
+                  //   onTap: (){
+                  //     setState(() {
+                  //       tabController.index=2;
+                  //     });
+                  //     Navigator.pop(context);
+                  //
+                  //   },
+                  //   leading: const Icon(Icons.trending_up),
+                  //   title: const Text('Trending Deals'),
+                  // ),
                   ListTile(
                     onTap: (){
                       // setState(() {
@@ -230,7 +230,7 @@ class _MainTabScreenState extends State<MainTabScreen> with SingleTickerProvider
             children: const [
               LatestScreen(),
               FeaturedScreen(),
-              TrendingScreen(),
+              // TrendingScreen(),
             ],
           ),
     );
